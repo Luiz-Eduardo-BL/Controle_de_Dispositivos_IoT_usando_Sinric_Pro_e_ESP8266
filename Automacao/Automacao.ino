@@ -1,8 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <SinricPro.h>
 #include <SinricProSwitch.h>
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
 #include <DHT.h>
 
 #define WIFI_SSID         "Coloque_Aqui_o_nome_do_seu_WiFi"
@@ -18,7 +16,6 @@
 #define DHT_TYPE          DHT11
 
 DHT dht(DHT_PIN, DHT_TYPE);
-LiquidCrystal_I2C lcd(0x27, 16, 2);  // Endereço I2C do LCD e configuração do número de colunas e linhas
 
 void setupWiFi();
 void setupSinricPro();
@@ -31,30 +28,23 @@ void setup() {
   setupWiFi();
   setupSinricPro();
   pinMode(Lampada_Pin, OUTPUT);
-  lcd.init();
-  lcd.backlight();
   dht.begin();
 }
 
 void loop() {
   SinricPro.handle();
   float temperatura = lerTemperatura();
-  lcd.setCursor(0, 0);
-  lcd.print("Temperatura: ");
-  lcd.setCursor(0, 1);
-  lcd.print(temperatura);
-  lcd.print(" C");
   delay(1000);
 }
 
 bool LampadaState(const String &deviceId, bool &state) {
   Serial.printf("A lampada foi %s\r\n", state ? "ligada" : "desligada");
   digitalWrite(Lampada_Pin, state);
-  return true; // request handled properly
+  return true; 
 }
 
 void setupWiFi() {
-  Serial.printf("\r\n[Wifi]: Conectando...");
+  Serial.printf("\r\nConectando WiFi...");
   WiFi.begin(WIFI_SSID, WIFI_PASS);
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -62,7 +52,7 @@ void setupWiFi() {
     delay(250);
   }
 
-  Serial.printf("Conectado!\r\n[WiFi]: Endereço de IP e %s\r\n", WiFi.localIP().toString().c_str());
+  Serial.printf("Conectado!\r\nEndereço de IP eh %s\r\n", WiFi.localIP().toString().c_str());
 }
 
 void setupSinricPro() {
