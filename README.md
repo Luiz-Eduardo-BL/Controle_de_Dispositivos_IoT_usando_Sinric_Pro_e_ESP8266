@@ -1,9 +1,8 @@
 # Controle de Dispositivos IoT usando Sinric Pro e ESP8266
 
-Este é um projeto que permite controlar uma lâmpada remotamente usando o Sinric Pro e exibir a temperatura em um display LCD I2C. O projeto utiliza a placa ESP8266 e os seguintes componentes: 
+Este é um projeto que permite controlar uma lâmpada remotamente usando o Sinric Pro e exibir a temperatura. O projeto utiliza a placa ESP8266 e os seguintes componentes: 
 - lâmpada, 
 - sensor de temperatura DHT11
-- display LCD I2C.
 
 ## Instalação
 
@@ -42,7 +41,6 @@ Siga as instruções abaixo para configurar o ambiente de desenvolvimento, insta
 3. Na caixa de busca, digite o nome da biblioteca e clique em "Instalar" para cada uma delas:
 - SinricPro: biblioteca oficial do Sinric Pro.
 - DHT: biblioteca para o sensor de temperatura DHT11.
-- LiquidCrystal_I2C: biblioteca para o display LCD I2C.
 
 4. Aguarde até que a instalação de todas as bibliotecas esteja concluída.
 
@@ -52,7 +50,6 @@ Conecte os componentes conforme as seguintes conexões:
 
 - Conecte a lâmpada ao pino digital 5 (Lampada_Pin) da placa ESP8266.
 - Conecte o sensor de temperatura DHT11 ao pino digital 2 (DHT_PIN) da placa ESP8266.
-- Conecte o display LCD I2C ao ESP8266 de acordo com o esquema de pinagem específico do seu módulo.
 
 Certifique-se de seguir as especificações do fabricante para cada componente.
 
@@ -89,7 +86,7 @@ Certifique-se de seguir as especificações do fabricante para cada componente.
 
 Após a configuração e upload do código para a placa ESP8266, o projeto estará pronto para uso.
 
-A placa ESP8266 estabelecerá uma conexão Wi-Fi com a sua rede e se conectará à nuvem do Sinric Pro. A lâmpada poderá ser controlada remotamente através do aplicativo Sinric Pro. Além disso, a temperatura será medida pelo sensor DHT11 e exibida no display LCD I2C.
+A placa ESP8266 estabelecerá uma conexão Wi-Fi com a sua rede e se conectará à nuvem do Sinric Pro. A lâmpada poderá ser controlada remotamente através do aplicativo Sinric Pro. Além disso, a temperatura será medida pelo sensor DHT11.
 
 ## Avisos
 
